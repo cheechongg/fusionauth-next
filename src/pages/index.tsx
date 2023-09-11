@@ -14,7 +14,7 @@ import LoginButton from '@/components/login-button';
 const inter = Inter({ subsets: ['latin'] });
 
 function Home() {
-  const user = useUser();
+  // const user = useUser();
   return (
     <>
       <Head>
@@ -65,9 +65,11 @@ function Home() {
   );
 }
 
-// Note that this is a higher-order function.
-export const getServerSideProps = withUserTokenSSR({
-  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})();
+export default Home;
 
-export default withUser()(Home);
+// Note that this is a higher-order function.
+// export const getServerSideProps = withUserTokenSSR({
+//   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+// })();
+
+// export default withUser()(Home);

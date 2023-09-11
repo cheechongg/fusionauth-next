@@ -22,9 +22,7 @@ const Auth = () => (
         app if the user is already authenticated.
       </p>
     </div>
-    <div>
-      <FirebaseAuth />
-    </div>
+    <div>{/* <FirebaseAuth /> */}</div>
   </div>
 );
 
