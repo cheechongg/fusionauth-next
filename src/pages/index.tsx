@@ -1,12 +1,20 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
+import {
+  useUser,
+  withUser,
+  withUserTokenSSR,
+  AuthAction,
+} from 'next-firebase-auth';
+
 import styles from '@/styles/Home.module.css';
 import LoginButton from '@/components/login-button';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
+function Home() {
+  const user = useUser();
   return (
     <>
       <Head>
@@ -56,3 +64,10 @@ export default function Home() {
     </>
   );
 }
+
+// Note that this is a higher-order function.
+export const getServerSideProps = withUserTokenSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})();
+
+export default withUser()(Home);
